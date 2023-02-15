@@ -1,22 +1,26 @@
 function tabs(widget) {
-  const contents = widget.querySelectorAll('[kjs-role=content]');
-  const tabs = widget.querySelectorAll('[kjs-role=tab]');
+  const contents = widget.querySelectorAll("[kjs-role=content]");
+  const tabs = widget.querySelectorAll("[kjs-role=tab]");
 
   function setup() {
-    const activeTab = widget.querySelector('.active[kjs-role=tab]');
+    const activeTab = widget.querySelector(".active[kjs-role=tab]");
 
     contents.forEach((content) => {
-      if (activeTab.getAttribute('kjs-id') == content.getAttribute('kjs-tab-id')) {
-        content.classList.add('active');
+      if (
+        activeTab.getAttribute("kjs-id") == content.getAttribute("kjs-tab-id")
+      ) {
+        content.classList.add("active");
       } else {
-        content.classList.remove('active');
+        content.classList.remove("active");
       }
     });
   }
 
   function handleTabClick(e) {
-    tabs.forEach((tab) => { tab.classList.remove('active'); });
-    e.target.classList.add('active');
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+    });
+    e.target.classList.add("active");
     setup();
   }
 
@@ -25,8 +29,8 @@ function tabs(widget) {
   tabs.forEach((tab) => {
     actions.push({
       element: tab,
-      event: 'click',
-      handler: handleTabClick
+      event: "click",
+      handler: handleTabClick,
     });
   });
 
