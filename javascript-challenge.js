@@ -169,12 +169,17 @@
         "use strict";
         function checkbox(widget) {
           var checkboxes = widget.querySelectorAll("[kjs-role=checkbox]");
-          var controls = widget.querySelectorAll("[kjs-role=Control]");
+          //var controls = widget.querySelectorAll("[kjs-role=Control]");
+          //console.log("controls:", controls);
+          console.log("checkboxes:", checkboxes);
 
-          function handleClick(e) {
-            console.log("item clicked");
+          function handleClick() {
+            for (let i = 0; i < checkboxes.length; i++) {
+              if (checkboxes[i].type == checkbox) {
+                console.log(true);
+              }
+            }
           }
-
           var actions = [];
           checkboxes.forEach((element) => {
             actions.push({
