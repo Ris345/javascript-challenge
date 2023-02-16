@@ -70,14 +70,18 @@
 
     <section class="example">
       <h2>Linked Checkboxes</h2>
-      TODO
-      <div kjs-role='checkbox'>
-          <label><input type="checkbox" kjs-role="check" />Todo1<input type="checkbox" kjs-role="control"  /></label>
-          <label><input type="checkbox" kjs-role="check" />Todo2<input type="checkbox" kjs-role="control"  /></label>
-          <label><input type="checkbox" kjs-role="check" />Todo3<input type="checkbox" kjs-role="control"  /></label>
-          <label><input type="checkbox" kjs-role="check" />Todo4<input type="checkbox" kjs-role="control"  /></label>
+      <div kjs-type="checkbox" >
+          <label><input type="checkbox" kjs-role="checkbox"  kjs-id="1"/>Todo1</label>
+          <label><input type="checkbox" kjs-role="checkbox" kjs-handle-id="1" />Todo2</label>
+          <label><input type="checkbox" kjs-role="checkbox" kjs-id="2"/>Todo3</label>
+          <label><input type="checkbox" kjs-role="checkbox" kjs-handle-id="2"/>Todo4</label>
       </div>
+      <div>
+        <label><input type="checkbox" kjs-role="Control" />Control1</label>
+        <label><input type="checkbox" kjs-role="Control" />Control2</label>
+        <label><input type="checkbox" kjs-role="Control" />Control3</label>
+        <label><input type="checkbox" kjs-role="Control" />Control4</label>
+    </div>
     </section>
   </body>
-
 </html>

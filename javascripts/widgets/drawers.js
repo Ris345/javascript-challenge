@@ -4,7 +4,6 @@ function accordion(widget) {
 
   function handleClick(e) {
     const openId = e.target.getAttribute('kjs-id');
-
     drawers.forEach((drawer) => {
       if (drawer.getAttribute('kjs-handle-id') == openId) {
         drawer.classList.toggle('open');

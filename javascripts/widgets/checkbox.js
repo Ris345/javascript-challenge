@@ -1,21 +1,21 @@
 function checkbox(widget) {
-  const check = widget.querySelectorAll('[kjs-role=ceckbox]');
-  const control = widget.querySelector('[kjs-role=control]');
+  var checkboxes = widget.querySelectorAll("[kjs-role=checkbox]");
+  var controls = widget.querySelectorAll("[kjs-role=Control]");
+  
+  function handleClick(e) {
+    console.log('item clicked'); 
+  }
 
+  var actions = [];
+  checkboxes.forEach((element) => {
+    actions.push({
+      element: element,
+      event: "click",
+      handler: handleClick,
+    });
+  });
 
-  function handleCheck() {
-    if (control) {
-      console.log(check); 
-     }
-     
-   }  
-
-   const actions = [{
-    element: check,
-    event: 'change',
-    handler: handleCheck
-  }];
-  return { setup, actions };
+  return { actions: actions };
 }
 
-module.exports = checkbox; 
+module.exports = checkbox;

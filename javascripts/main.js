@@ -7,3 +7,5 @@ import checkbox from "./widgets/checkbox";
 document.addEventListener("DOMContentLoaded", () => {
   kjs({ drawers, extendingForm, tabs, checkbox }, document);
 });
+
+

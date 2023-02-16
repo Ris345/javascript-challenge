@@ -55,7 +55,9 @@
           var widgetElements = page.querySelectorAll("[kjs-type]");
           widgetElements.forEach(function (el) {
             var widgetName = el.getAttribute("kjs-type");
+            console.log(widgetName);
             var widget = constructors[widgetName](el);
+            console.log(widget);
             runSetup(widget);
             setListeners(widget);
           });
@@ -74,6 +76,7 @@
           require("./widgets/extending-form")
         );
         var _tabs = _interopRequireDefault(require("./widgets/tabs"));
+        var _checkbox = _interopRequireDefault(require("./widgets/checkbox"));
         function _interopRequireDefault(obj) {
           return obj && obj.__esModule ? obj : { default: obj };
         }
@@ -83,6 +86,7 @@
               drawers: _drawers["default"],
               extendingForm: _extendingForm["default"],
               tabs: _tabs["default"],
+              checkbox: _checkbox["default"],
             },
             document
           );
@@ -92,8 +96,8 @@
         "./k": 1,
         "./widgets/drawers": 3,
         "./widgets/extending-form": 4,
-        "./widgets/tabs": 5,
-        "./widgets/checkbox": 6,
+        "./widgets/checkbox": 5,
+        "./widgets/tabs": 6,
       },
     ],
     3: [
@@ -132,7 +136,6 @@
     4: [
       function (require, module, exports) {
         "use strict";
-
         function extendingForm(widget) {
           var extensions = widget.querySelectorAll("[kjs-role=extension]");
           var toggle = widget.querySelector("[kjs-role=toggle]");
@@ -162,6 +165,33 @@
       {},
     ],
     5: [
+      function (require, module, exports) {
+        "use strict";
+        function checkbox(widget) {
+          var checkboxes = widget.querySelectorAll("[kjs-role=checkbox]");
+          var controls = widget.querySelectorAll("[kjs-role=Control]");
+
+          function handleClick(e) {
+            console.log("item clicked");
+          }
+
+          var actions = [];
+          checkboxes.forEach((element) => {
+            actions.push({
+              element: element,
+              event: "click",
+              handler: handleClick,
+            });
+          });
+
+          return { actions: actions };
+        }
+
+        module.exports = checkbox;
+      },
+      {},
+    ],
+    6: [
       function (require, module, exports) {
         "use strict";
 
@@ -202,17 +232,6 @@
           };
         }
         module.exports = tabs;
-      },
-      {},
-    ],
-    6: [
-      function (require, module, exports) {
-        "use strict";
-
-        function checkbox(widget) {
-          console.log(widget);
-        }
-        module.exports = checkbox;
       },
       {},
     ],
