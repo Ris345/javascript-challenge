@@ -169,17 +169,41 @@
         "use strict";
         function checkbox(widget) {
           var checkboxes = widget.querySelectorAll("[kjs-role=checkbox]");
-          //var controls = widget.querySelectorAll("[kjs-role=Control]");
-          //console.log("controls:", controls);
-          console.log("checkboxes:", checkboxes);
-
-          function handleClick() {
-            for (let i = 0; i < checkboxes.length; i++) {
-              if (checkboxes[i].type == checkbox) {
-                console.log(true);
-              }
+          var controls = widget.querySelectorAll("[kjs-role=selected]");
+          console.log("controls:", controls);
+          function handleClick(e) {
+           
+            //  if B boxes are selected then run the helper function boxB
+            // else if A box is selected run the boxA function
+            if (checkboxes) {
+              boxB();
+            } else {
+              console.log("main box selected1");
             }
+
+            //
+            // for (let i = 0; i < checkboxes.length; i++) {
+            //   console.log(checkboxes);
+            //   if ((checkboxes[i].checked = true)) {
+            //     checkboxes[i].checked = true;
+            //     console.log(e.target.value.length);
+            //   } else {
+            //     helper();
+            //   }
+            // }
           }
+
+          function boxA() {
+            // if boxB boxes are select them then unselect then only select boxA
+            // else if boxB are not selected then selecte them with boxA
+          }
+
+          function boxB() {
+            // run a for loop to loop through all the boxes
+            // select all boxes
+            console.log("box B selected");
+          }
+
           var actions = [];
           checkboxes.forEach((element) => {
             actions.push({

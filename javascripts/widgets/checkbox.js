@@ -6,9 +6,9 @@ function checkbox(widget) {
 
   function handleClick() {
     for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].type == checkbox) {
+      if (checkboxes[i].type === 'checkbox') {
         console.log(true);
-      }
+      } 
       // if checkboxes are unchecked then check em
       // else if check boxes are checked uncheck em
     }
