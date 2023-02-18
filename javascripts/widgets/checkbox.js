@@ -1,25 +1,20 @@
 function checkbox(widget) {
   var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
-  // var controls = widget.querySelector("[kjs-role=checkbox]");
   const controlBox = document.getElementById("control");
-  console.log(controlBox.id);
   const checkBox = document.getElementById("check");
-  console.log(checkBox.id);
-  // console.log(controls.checked);
 
   function handleClick(e) {
     debugger;
     // if main box was selected
     if (e.target === controlBox) {
-      if (controlBox.checked) {
-        // select the boxes
-        selectMainBoxes();
-      } else {
-        //  if main already selected unselect the boxes
-        unselectMainBoxes();
-      }
+      controlBox.checked
+        ? // select all
+          selectControlBoxes()
+        : // unselectAll
+          unselectControlBoxes();
       // if related check box was selected
-    } else if (e.target === checkBox) {
+      // if related check box were selected
+    } else {
       selectRelatedBoxes();
     }
   }
@@ -32,14 +27,14 @@ function checkbox(widget) {
   }
 
   // select all checkBoxes
-  function selectMainBoxes() {
+  function selectControlBoxes() {
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = true;
     }
   }
 
   // unselect all checkboxes
-  function unselectMainBoxes() {
+  function unselectControlBoxes() {
     for (let i = 0; i < checkboxes.length; i++) {
       checkboxes[i].checked = false;
     }

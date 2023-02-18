@@ -170,36 +170,31 @@
         "use strict";
         function checkbox(widget) {
           var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
-          //var controls = widget.querySelector("[kjs-role=checkbox]");
           const controlBox = document.getElementById("control");
-          console.log(controlBox.id);
           const checkBox = document.getElementById("check");
-          console.log(checkBox.id);
 
           function handleClick(e) {
             debugger;
             // if main box was selected
             if (e.target === controlBox) {
-              if (controlBox.checked) {
-                // select the boxes
-                selectControlBoxes();
-              } else {
-                //  if main already selected unselect the boxes
-                unselectControlBoxes();
-              }
+              controlBox.checked
+                ? // select all
+                  selectControlBoxes()
+                : // unselectAll
+                  unselectControlBoxes();
               // if related check box was selected
-            } else if (e.target === checkBox) {
+            } else {
               selectRelatedBoxes();
             }
           }
-           // only select the selected check box 
+          // only select the selected check box
           function selectRelatedBoxes() {
             if ((checkboxes.type = "checkbox")) {
               checkboxes.checked = true;
             }
           }
-          
-           // select all checkBoxes
+
+          // select all checkBoxes
           function selectControlBoxes() {
             for (let i = 0; i < checkboxes.length; i++) {
               checkboxes[i].checked = true;
