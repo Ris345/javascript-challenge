@@ -182,36 +182,31 @@
             if (e.target === controlBox) {
               if (controlBox.checked) {
                 // select the boxes
-                selectMainBoxes();
+                selectControlBoxes();
               } else {
                 //  if main already selected unselect the boxes
-                deslectMainBoxes();
+                unselectControlBoxes();
               }
               // if related check box was selected
             } else if (e.target === checkBox) {
               selectRelatedBoxes();
             }
           }
-
+           // only select the selected check box 
           function selectRelatedBoxes() {
             if ((checkboxes.type = "checkbox")) {
-              checkboxes[i].checked = true;
+              checkboxes.checked = true;
             }
           }
-
-          function diselectRelatedBoxes() {
-            if ((checkboxes.type = "checkbox")) {
-              checkboxes[i].checked = false;
-            }
-          }
-
-          function selectMainBoxes() {
+          
+           // select all checkBoxes
+          function selectControlBoxes() {
             for (let i = 0; i < checkboxes.length; i++) {
               checkboxes[i].checked = true;
             }
           }
-
-          function deslectMainBoxes() {
+          // unselect all checkboxes
+          function unselectControlBoxes() {
             for (let i = 0; i < checkboxes.length; i++) {
               checkboxes[i].checked = false;
             }
