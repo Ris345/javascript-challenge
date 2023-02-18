@@ -172,6 +172,7 @@
           var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
           const controlBox = document.getElementById("control");
           const checkId = document.getElementById("check");
+          console.log(checkId);
 
           function handleClick(e) {
             debugger;
@@ -183,8 +184,12 @@
                 : // unselectAll
                   unselectControlBoxes();
               // if related check box was selected
-            } else if (e.target === checkId) {
-              checkId.checked ? selectRelatedBoxes() : indeterminateStage();
+            } else {
+              for (let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked
+                  ? selectRelatedBoxes
+                  : indeterminateStage();
+              }
             }
           }
           // only select the selected check box
@@ -195,9 +200,12 @@
           }
 
           function indeterminateStage() {
-            // if one is selected then return indeterminate state
-            // if all related checkboxes are unselected then return false;
-            controlBox.indeterminate = true;
+            // to return a intdeterminate postion two conditons the main should be selected
+            // if the main is not selected then interdeterminate postiion = false
+            // else inderminate position = true;
+            controlBox.checked
+              ? (controlBox.indeterminate = true)
+              : (controlBox.indeterminate = false);
           }
 
           // select all checkBoxes
