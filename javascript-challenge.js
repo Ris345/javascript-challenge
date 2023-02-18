@@ -171,7 +171,7 @@
         function checkbox(widget) {
           var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
           const controlBox = document.getElementById("control");
-          const checkBox = document.getElementById("check");
+          const checkId = document.getElementById("check");
 
           function handleClick(e) {
             debugger;
@@ -183,8 +183,8 @@
                 : // unselectAll
                   unselectControlBoxes();
               // if related check box was selected
-            } else {
-              selectRelatedBoxes();
+            } else if (e.target === checkId) {
+              checkId.checked ? selectRelatedBoxes() : indeterminateStage();
             }
           }
           // only select the selected check box
@@ -192,6 +192,12 @@
             if ((checkboxes.type = "checkbox")) {
               checkboxes.checked = true;
             }
+          }
+
+          function indeterminateStage() {
+            // if one is selected then return indeterminate state
+            // if all related checkboxes are unselected then return false;
+            controlBox.indeterminate = true;
           }
 
           // select all checkBoxes

@@ -87,14 +87,12 @@ form[kjs-type=extendingForm] [kjs-role=extension] {
 
     [kjs-type=checkbox]{
       border: 1px solid #00B7BD;
+      color: rgb(0, 0, 0);
     }
 
     [kjs-role=checkmark]{
       cursor: pointer;
     }
 
-    [kjs-role=checkmark]:after{
-      background-color: #00B7BD;
-    }
-    
+   
     
