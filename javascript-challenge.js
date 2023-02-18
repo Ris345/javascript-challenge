@@ -111,6 +111,7 @@
             var openId = e.target.getAttribute("kjs-id");
             drawers.forEach(function (drawer) {
               if (drawer.getAttribute("kjs-handle-id") == openId) {
+                console.log(drawer.getAttribute("kjs-handle-id"));
                 drawer.classList.toggle("open");
               } else {
                 drawer.classList.remove("open");
@@ -168,40 +169,52 @@
       function (require, module, exports) {
         "use strict";
         function checkbox(widget) {
-          var checkboxes = widget.querySelectorAll("[kjs-role=checkbox]");
-          var controls = widget.querySelectorAll("[kjs-role=selected]");
-          console.log("controls:", controls);
+          var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
+          //var controls = widget.querySelector("[kjs-role=checkbox]");
+          const controlBox = document.getElementById("control");
+          console.log(controlBox.id);
+          const checkBox = document.getElementById("check");
+          console.log(checkBox.id);
+
           function handleClick(e) {
-           
-            //  if B boxes are selected then run the helper function boxB
-            // else if A box is selected run the boxA function
-            if (checkboxes) {
-              boxB();
-            } else {
-              console.log("main box selected1");
+            debugger;
+            // if main box was selected
+            if (e.target === controlBox) {
+              if (controlBox.checked) {
+                // select the boxes
+                selectMainBoxes();
+              } else {
+                //  if main already selected unselect the boxes
+                deslectMainBoxes();
+              }
+              // if related check box was selected
+            } else if (e.target === checkBox) {
+              selectRelatedBoxes();
             }
-
-            //
-            // for (let i = 0; i < checkboxes.length; i++) {
-            //   console.log(checkboxes);
-            //   if ((checkboxes[i].checked = true)) {
-            //     checkboxes[i].checked = true;
-            //     console.log(e.target.value.length);
-            //   } else {
-            //     helper();
-            //   }
-            // }
           }
 
-          function boxA() {
-            // if boxB boxes are select them then unselect then only select boxA
-            // else if boxB are not selected then selecte them with boxA
+          function selectRelatedBoxes() {
+            if ((checkboxes.type = "checkbox")) {
+              checkboxes[i].checked = true;
+            }
           }
 
-          function boxB() {
-            // run a for loop to loop through all the boxes
-            // select all boxes
-            console.log("box B selected");
+          function diselectRelatedBoxes() {
+            if ((checkboxes.type = "checkbox")) {
+              checkboxes[i].checked = false;
+            }
+          }
+
+          function selectMainBoxes() {
+            for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = true;
+            }
+          }
+
+          function deslectMainBoxes() {
+            for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked = false;
+            }
           }
 
           var actions = [];

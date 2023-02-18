@@ -1,16 +1,50 @@
 function checkbox(widget) {
-  var checkboxes = widget.querySelectorAll("[kjs-role=checkbox]");
-  //var controls = widget.querySelectorAll("[kjs-role=Control]");
-  //console.log("controls:", controls);
-  console.log("checkboxes:", checkboxes);
+  var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
+ // var controls = widget.querySelector("[kjs-role=checkbox]");
+  const controlBox = document.getElementById("control");
+  console.log(controlBox.id);
+  const checkBox = document.getElementById("check");
+  console.log(checkBox.id);
+  // console.log(controls.checked);
 
-  function handleClick() {
+  function handleClick(e) {
+    debugger;
+    // if main box was selected
+    if (e.target === controlBox) {
+      if (controlBox.checked) {
+        // select the boxes
+        selectMainBoxes();
+      } else {
+        //  if main already selected unselect the boxes
+        deslectMainBoxes();
+      }
+      // if related check box was selected
+    } else if (e.target === checkBox) {
+      selectRelatedBoxes();
+    }
+  }
+
+  function selectRelatedBoxes() {
+    if ((checkboxes.type = "checkbox")) {
+      checkboxes[i].checked = true;
+    }
+  }
+
+  function diselectRelatedBoxes() {
+    if ((checkboxes.type = "checkbox")) {
+      checkboxes[i].checked = false;
+    }
+  }
+
+  function selectMainBoxes() {
     for (let i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].type === 'checkbox') {
-        console.log(true);
-      } 
-      // if checkboxes are unchecked then check em
-      // else if check boxes are checked uncheck em
+      checkboxes[i].checked = true;
+    }
+  }
+
+  function deslectMainBoxes() {
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
     }
   }
 
