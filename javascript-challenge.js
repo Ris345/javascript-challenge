@@ -175,7 +175,6 @@
           const checkFour = document.getElementById("check4");
 
           function handleClick(e) {
-            debugger;
             // if controlling checkbox was selected
             if (e.target === controlBox) {
               // check if control box is checked
@@ -190,7 +189,7 @@
             }
           }
 
-          // check to  see if realated boxes need to be checked or called to inderminate stage
+          // check to  see if related boxes need to be checked or called to indeterminate stage
           function helper() {
             for (let i = 0; i < checkboxes.length; i++) {
               checkboxes[i].checked
@@ -201,10 +200,10 @@
 
           // only select the selected related check box
           function selectRelatedBoxes() {
-            debugger;
             if ((checkboxes.type = "checkbox")) {
               checkboxes.checked = true;
             }
+            // remove the indeterminate stage and add a checked box
             if (
               checkOne.checked &&
               checkTwo.checked &&
@@ -212,7 +211,7 @@
               checkFour.checked &&
               controlBox.indeterminate
             ) {
-              return (controlBox.checked = true);
+              return (controlBox.indeterminate = false);
             }
           }
 
@@ -231,8 +230,6 @@
             ) {
               controlBox.checked = false;
             }
-            // if indeterminate position is truthy and all check boxes are checked
-            // control checkbox goes to the checked state
           }
 
           // select all checkBoxes

@@ -5,12 +5,11 @@ function checkbox(widget) {
   const checkTwo = document.getElementById("check2");
   const checkThree = document.getElementById("check3");
   const checkFour = document.getElementById("check4");
-  console.log(checkOne.checked);
 
   function handleClick(e) {
-    debugger;
-    // if main box was selected
+    // if controlling checkbox was selected
     if (e.target === controlBox) {
+      // check if control box is checked
       controlBox.checked
         ? // select all
           selectControlBoxes()
@@ -18,27 +17,41 @@ function checkbox(widget) {
           unselectControlBoxes();
       // if related check box was selected
     } else {
-      for (let i = 0; i < checkboxes.length; i++) {
-        checkboxes[i].checked
-          ? selectRelatedBoxes
-          : indeterminateStage();
-      }
+      helper();
     }
   }
-  // only select the selected check box
+
+  // check to  see if related boxes need to be checked or called to indeterminate stage
+  function helper() {
+    for (let i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked ? selectRelatedBoxes() : indeterminateStage();
+    }
+  }
+
+  // only select the selected related check box
   function selectRelatedBoxes() {
     if ((checkboxes.type = "checkbox")) {
       checkboxes.checked = true;
     }
+    // remove the indeterminate stage and add a checked box
+    if (
+      checkOne.checked &&
+      checkTwo.checked &&
+      checkThree.checked &&
+      checkFour.checked &&
+      controlBox.indeterminate
+    ) {
+      return (controlBox.indeterminate = false);
+    }
   }
 
+  // indeterminate stage
   function indeterminateStage() {
-    // if the main is not selected then interdeterminate postiion = false
-    // else inderminate position = true;
     controlBox.checked
       ? (controlBox.indeterminate = true)
       : (controlBox.indeterminate = false);
-    // tocheck if all values are removed
+
+    //  if all values are unchecked
     if (
       !checkOne.checked &&
       !checkTwo.checked &&
