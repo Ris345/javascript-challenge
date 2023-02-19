@@ -55,9 +55,7 @@
           var widgetElements = page.querySelectorAll("[kjs-type]");
           widgetElements.forEach(function (el) {
             var widgetName = el.getAttribute("kjs-type");
-            console.log(widgetName);
             var widget = constructors[widgetName](el);
-            console.log(widget);
             runSetup(widget);
             setListeners(widget);
           });
@@ -175,12 +173,12 @@
           const checkTwo = document.getElementById("check2");
           const checkThree = document.getElementById("check3");
           const checkFour = document.getElementById("check4");
-          console.log(checkOne.checked);
 
           function handleClick(e) {
             debugger;
-            // if main box was selected
+            // if controlling checkbox was selected
             if (e.target === controlBox) {
+              // check if control box is checked
               controlBox.checked
                 ? // select all
                   selectControlBoxes()
@@ -188,28 +186,43 @@
                   unselectControlBoxes();
               // if related check box was selected
             } else {
-              for (let i = 0; i < checkboxes.length; i++) {
-                checkboxes[i].checked
-                  ? selectRelatedBoxes
-                  : indeterminateStage();
-              }
-            }
-          }
-          // only select the selected check box
-          function selectRelatedBoxes() {
-            if ((checkboxes.type = "checkbox")) {
-              checkboxes.checked = true;
+              helper();
             }
           }
 
+          // check to  see if realated boxes need to be checked or called to inderminate stage
+          function helper() {
+            for (let i = 0; i < checkboxes.length; i++) {
+              checkboxes[i].checked
+                ? selectRelatedBoxes()
+                : indeterminateStage();
+            }
+          }
+
+          // only select the selected related check box
+          function selectRelatedBoxes() {
+            debugger;
+            if ((checkboxes.type = "checkbox")) {
+              checkboxes.checked = true;
+            }
+            if (
+              checkOne.checked &&
+              checkTwo.checked &&
+              checkThree.checked &&
+              checkFour.checked &&
+              controlBox.indeterminate
+            ) {
+              return (controlBox.checked = true);
+            }
+          }
+
+          // indeterminate stage
           function indeterminateStage() {
-            // to return a indeterminate postion two conditons the main should be selected
-            // if the main is not selected then interdeterminate postiion = false
-            // else inderminate position = true;
             controlBox.checked
               ? (controlBox.indeterminate = true)
               : (controlBox.indeterminate = false);
-            // tocheck if all values are removed
+
+            //  if all values are unchecked
             if (
               !checkOne.checked &&
               !checkTwo.checked &&
@@ -218,6 +231,8 @@
             ) {
               controlBox.checked = false;
             }
+            // if indeterminate position is truthy and all check boxes are checked
+            // control checkbox goes to the checked state
           }
 
           // select all checkBoxes

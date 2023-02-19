@@ -1,7 +1,11 @@
 function checkbox(widget) {
   var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
   const controlBox = document.getElementById("control");
-  const checkBox = document.getElementById("check");
+  const checkOne = document.getElementById("check1");
+  const checkTwo = document.getElementById("check2");
+  const checkThree = document.getElementById("check3");
+  const checkFour = document.getElementById("check4");
+  console.log(checkOne.checked);
 
   function handleClick(e) {
     debugger;
@@ -13,16 +17,35 @@ function checkbox(widget) {
         : // unselectAll
           unselectControlBoxes();
       // if related check box was selected
-      // if related check box were selected
     } else {
-      selectRelatedBoxes();
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkboxes[i].checked
+          ? selectRelatedBoxes
+          : indeterminateStage();
+      }
     }
   }
-
   // only select the selected check box
   function selectRelatedBoxes() {
     if ((checkboxes.type = "checkbox")) {
       checkboxes.checked = true;
+    }
+  }
+
+  function indeterminateStage() {
+    // if the main is not selected then interdeterminate postiion = false
+    // else inderminate position = true;
+    controlBox.checked
+      ? (controlBox.indeterminate = true)
+      : (controlBox.indeterminate = false);
+    // tocheck if all values are removed
+    if (
+      !checkOne.checked &&
+      !checkTwo.checked &&
+      !checkThree.checked &&
+      !checkFour.checked
+    ) {
+      controlBox.checked = false;
     }
   }
 
@@ -32,7 +55,6 @@ function checkbox(widget) {
       checkboxes[i].checked = true;
     }
   }
-
   // unselect all checkboxes
   function unselectControlBoxes() {
     for (let i = 0; i < checkboxes.length; i++) {
