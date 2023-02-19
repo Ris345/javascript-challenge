@@ -171,8 +171,11 @@
         function checkbox(widget) {
           var checkboxes = widget.querySelectorAll("[kjs-role=checkmark]");
           const controlBox = document.getElementById("control");
-          const checkId = document.getElementById("check");
-          console.log(checkId);
+          const checkOne = document.getElementById("check1");
+          const checkTwo = document.getElementById("check2");
+          const checkThree = document.getElementById("check3");
+          const checkFour = document.getElementById("check4");
+          console.log(checkOne.checked);
 
           function handleClick(e) {
             debugger;
@@ -200,12 +203,21 @@
           }
 
           function indeterminateStage() {
-            // to return a intdeterminate postion two conditons the main should be selected
+            // to return a indeterminate postion two conditons the main should be selected
             // if the main is not selected then interdeterminate postiion = false
             // else inderminate position = true;
             controlBox.checked
               ? (controlBox.indeterminate = true)
               : (controlBox.indeterminate = false);
+            // tocheck if all values are removed
+            if (
+              !checkOne.checked &&
+              !checkTwo.checked &&
+              !checkThree.checked &&
+              !checkFour.checked
+            ) {
+              controlBox.checked = false;
+            }
           }
 
           // select all checkBoxes
