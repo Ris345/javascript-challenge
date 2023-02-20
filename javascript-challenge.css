@@ -91,7 +91,9 @@ form[kjs-type=extendingForm] [kjs-role=extension] {
     }
 
     [kjs-role=checkmark]{
-      cursor: pointer;
+       cursor: pointer;
+        width: 16.5px;
+       height: 16.5px;
     }
-
+  
     

@@ -24,15 +24,6 @@ EXPECTED all buttons get uselected except main
 ACTUAL  only main is getting unselected 
 
 
-
-
-
-
-
-test case 2 
-EXPECTED all buttons 
- ACTUAL 
-
 main button 
 test case 1 
 EXPECTED all buttons along with main get selected 

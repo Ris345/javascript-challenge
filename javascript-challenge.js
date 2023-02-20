@@ -183,7 +183,7 @@
                   selectControlBoxes()
                 : // unselectAll
                   unselectControlBoxes();
-              // if related check box was selected
+              // if related check box is selected
             } else {
               helper();
             }
